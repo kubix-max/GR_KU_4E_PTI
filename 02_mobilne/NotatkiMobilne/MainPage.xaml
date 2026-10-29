@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotatkiMobilne.MainPage"
+             Title="Moje notatki">
+
+    <StackLayout Padding="10" BackgroundColor="White">
+
+        
+        <Label Text="Moje notatki" FontSize="24" HorizontalOptions="Center" />
+
+        
+        <Grid Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Entry x:Name="NoteEntry"
+                   Placeholder="Nowy element"
+                   Grid.Column="0" />
+
+            <Button Text="DODAJ"
+                    BackgroundColor="#DC143C"
+                    TextColor="White"
+                    Clicked="OnAddButtonClicked"
+                    Margin="10,0,0,0"
+                    Grid.Column="1" />
+        </Grid>
+
+        
+        <CollectionView x:Name="NotesCollectionView"
+                        ItemsSource="{Binding Notatki}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" BackgroundColor="White" Margin="0,0,0,2">
+                        <Label Text="{Binding}" TextColor="Black" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </StackLayout>
+</ContentPage>
